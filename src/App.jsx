@@ -1,6 +1,7 @@
 import {Routes,Route} from 'react-router-dom'
 import HomePage from './pages/Home'
 import RoomPage from './pages/Room'
+import './App.css'
 
 
 function App() {

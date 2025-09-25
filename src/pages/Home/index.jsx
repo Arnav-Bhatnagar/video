@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+/*import React, { useCallback } from 'react'
 import { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 
@@ -9,7 +9,7 @@ const HomePage = () => {
     /*const handleSubmit = ()=>{  
         console.log(Value);
         setValue('');
-    }*/
+    }
 
     const handleSubmit = useCallback(()=>{  //same thing can be done by useffect
         navigate(`/room/${Value}`);
@@ -21,6 +21,106 @@ const HomePage = () => {
       <button onClick={handleSubmit}>Join Room</button>
     </div>
   )
+} */
+
+
+  import React, { useCallback, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+const HomePage = () => {
+  const [roomValue, setRoomValue] = useState('')
+  const [roleValue, setRoleValue] = useState('')
+  const navigate = useNavigate();
+
+  const handleSubmit = useCallback(() => {
+    // send both room and role in URL
+    navigate(`/room/${roomValue}?role=${roleValue}`);
+  }, [navigate, roomValue, roleValue]);
+
+  return (
+    <div style={styles.container}>
+      <div style={styles.formContainer}>
+        <h1 style={styles.title}>Join a Room</h1>
+        <input 
+          value={roomValue} 
+          onChange={(e) => setRoomValue(e.target.value)} 
+          type="text" 
+          placeholder="Room Code" 
+          style={styles.input}
+        />
+        <input 
+          value={roleValue} 
+          onChange={(e) => setRoleValue(e.target.value)} 
+          type="text" 
+          placeholder="Role (host/guest)" 
+          style={styles.input}
+        />
+        <button onClick={handleSubmit} style={styles.button}>
+          Join Room
+        </button>
+      </div>
+    </div>
+  )
 }
+
+const styles = {
+  container: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: '100vh',
+    backgroundColor: '#f5f5f5',
+    fontFamily: 'Arial, sans-serif',
+  },
+  formContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '20px',
+    padding: '40px',
+    backgroundColor: 'white',
+    borderRadius: '10px',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    minWidth: '300px',
+  },
+  title: {
+    margin: '0 0 20px 0',
+    color: '#333',
+    fontSize: '24px',
+  },
+  input: {
+    width: '100%',
+    padding: '12px 16px',
+    fontSize: '16px',
+    border: '1px solid #ddd',
+    borderRadius: '5px',
+    outline: 'none',
+    transition: 'border-color 0.3s',
+  },
+  button: {
+    width: '100%',
+    padding: '12px 16px',
+    fontSize: '16px',
+    backgroundColor: '#007bff',
+    color: 'white',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s',
+  },
+}
+
+// Add hover effects
+const inputHover = {
+  borderColor: '#007bff',
+}
+
+const buttonHover = {
+  backgroundColor: '#0056b3',
+}
+
+// You can add these hover effects using CSS or a CSS-in-JS solution
+// For simplicity, I'll show how to add them with inline styles on hover
+// But for better practice, consider using CSS classes or a styling library
 
 export default HomePage
