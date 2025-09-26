@@ -24,8 +24,9 @@ const HomePage = () => {
 } */
 
 
-  import React, { useCallback, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import nabhalogo1 from './nabhalogo1.jpg'
 
 const HomePage = () => {
   const [roomValue, setRoomValue] = useState('')
@@ -39,24 +40,27 @@ const HomePage = () => {
 
   return (
     <div style={styles.container}>
+
+
       <div style={styles.formContainer}>
-        <h1 style={styles.title}>Join a Room</h1>
-        <input 
-          value={roomValue} 
-          onChange={(e) => setRoomValue(e.target.value)} 
-          type="text" 
-          placeholder="Room Code" 
+
+        <img src={nabhalogo1} alt="Nabha logo" style={{ width: '30vh',height:"10vh" }} />
+        <input
+          value={roomValue}
+          onChange={(e) => setRoomValue(e.target.value)}
+          type="text"
+          placeholder="Room No."
           style={styles.input}
         />
-        <input 
-          value={roleValue} 
-          onChange={(e) => setRoleValue(e.target.value)} 
-          type="text" 
-          placeholder="Role (host/guest)" 
+        <input
+          value={roleValue}
+          onChange={(e) => setRoleValue(e.target.value)}
+          type="text"
+          placeholder="Doctor ID/Ptient ID"
           style={styles.input}
         />
         <button onClick={handleSubmit} style={styles.button}>
-          Join Room
+          Join Call
         </button>
       </div>
     </div>
@@ -69,7 +73,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: '100vh',
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#d2dab5ff',
     fontFamily: 'Arial, sans-serif',
   },
   formContainer: {
