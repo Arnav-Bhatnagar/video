@@ -10,10 +10,12 @@ import { useState } from 'react';
 
 
 
+
 const RoomPage = () => {
 
     const [showForm, setShowForm] = useState(false);
     const { id } = useParams();  //destructuring
+     const [selected, setSelected] = useState("None");
 
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
@@ -110,6 +112,19 @@ const RoomPage = () => {
          </div> */
          <div style={{ display: "flex", height: "100vh" }}>
              <div ref={Mymeeting} style={{ flex: 3, border: "2px solid black" }}></div>
+
+             <div style={{ position: "absolute", top: "27px", left: "35px" ,zIndex:999}}>
+      <select
+        value={selected}
+        onChange={(e) => setSelected(e.target.value)}
+        style={{ padding: "5px", borderRadius: "5px" }}
+      >
+        <option value="None">None</option>
+        <option value="English">English</option>
+        <option value="Hindi">हिंदी</option>
+        <option value="Punjabi">ਪੰਜਾਬੀ</option>
+      </select>
+    </div>
  
 
         { role === "doctor123" && (
