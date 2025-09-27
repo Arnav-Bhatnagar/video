@@ -45,11 +45,14 @@ const RoomPage = () => {
                      '?roomID=' +
                      roomID,*/
                 },
+                
             ],
 
             scenario: {
                 mode: ZegoUIKitPrebuilt.VideoConference,
             },
+
+            showScreenSharingButton: true,
 
 
 
@@ -246,7 +249,7 @@ const RoomPage = () => {
                                 cursor: "pointer",
                             }}
                         >
-                            Save
+                            Submit
                         </button>
                     </form>
                 )}
